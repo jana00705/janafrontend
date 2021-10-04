@@ -3,28 +3,28 @@
         <b-modal id="modal-3" scrollable title="COLLEGE REGISTRATION" ref="modal" hide-footer>
   <div>
         <b-form-group id="clg-grp-1" label="College Name" >
-          <b-form-input  v-model="college.CollegeName">
+          <b-form-input  v-model="college.collegename">
           </b-form-input>
         </b-form-group>
 
         <b-form-group id="clg-grp-2" label="User Name" >
-          <b-form-input  v-model="college.UserName">
+          <b-form-input  v-model="college.username">
           </b-form-input>
         </b-form-group>
 
         <b-form-group id="clg-grp-3" label="Password" >
-          <b-form-input  v-model="college.Password">
+          <b-form-input  v-model="college.password">
           </b-form-input>
         </b-form-group>
 
         <b-form-group id="clg-grp-1" label="phone Number">
-          <b-form-input  v-model="college.Phone" type="number">
+          <b-form-input  v-model="college.phone" >
 
           </b-form-input>
         </b-form-group>
 
         <b-form-group id="clg-grp-1" label="Postal Address" >
-          <b-form-input  v-model="college.Address">
+          <b-form-input  v-model="college.address">
           </b-form-input>
         </b-form-group>
 
@@ -56,13 +56,13 @@ export default {
   },
   data() {
     return {
-      colleges:null,
+      
       college: {
-       CollegeName:'',
-       UserName:'',
-       Password:'',
+       collegename:'',
+       username:'',
+       password:'',
        phone:'',
-       Address:'',
+       address:'',
       },
     };
   },
@@ -74,11 +74,11 @@ export default {
         CollegeService.putCollege(this.college)
           .then((response) => {
             
-           this.college.CollegeName = "";
-           this.college.UserName = "";
-           this.college.Password= "";
-           this.college.Phone = "";
-           this.college.Address = "";
+           this.college.collegename = "";
+           this.college.username = "";
+           this.college.password= "";
+           this.college.phone = "";
+           this.college.address = "";
          
 
             resolve(response);

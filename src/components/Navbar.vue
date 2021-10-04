@@ -76,11 +76,11 @@
 <!-- LOGIN END-->
 
 <!-- STUDENT REGISTRATION START-->
-  <!-- <div>
+  <div>
  <PopStudent />
-  </div> -->
+  </div>
 <!-- STUDENT REGISTRATION END-->
-<!-- <LoGin /> -->
+<Login />
 <!-- COLLEGE REGISTRATION START-->
     <div>
 <PopCollege />
@@ -117,8 +117,8 @@ h1{
 
 
 <script>
-// import PopStudent from './Popstudent.vue'
-// import LoGin from './Login.vue'
+import PopStudent from './Popstudent.vue'
+ import Login from './Login.vue'
 import PopCollege from './Popcollege.vue'
 export default {
   name: 'Home',
@@ -130,7 +130,7 @@ export default {
     },
   components:{
         
-        PopCollege
+        PopCollege,PopStudent,Login
   },
   
 }
