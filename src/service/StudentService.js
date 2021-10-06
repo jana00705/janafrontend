@@ -38,5 +38,20 @@ export default{
             });
         });
       },
+      deleteStudent: function(id){
+        var ax1 = axios.create({
+            baseURL: "http://localhost:8080",
+        }); 
+        return new Promise((resolve, reject) => {
+            ax1({
+                method: 'get',
+                url: '/student/delete/' + id,
+            }).then((response) => {                     
+                resolve(response);
+            }).catch((err) => {
+                reject(err);
+            });
+        });             
+    },
    
 }

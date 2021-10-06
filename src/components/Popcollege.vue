@@ -13,12 +13,12 @@
         </b-form-group>
 
         <b-form-group id="clg-grp-3" label="Password" >
-          <b-form-input  v-model="college.password">
+          <b-form-input type="password" v-model="college.password">
           </b-form-input>
         </b-form-group>
 
         <b-form-group id="clg-grp-1" label="phone Number">
-          <b-form-input  v-model="college.phone" >
+          <b-form-input type="number" v-model="college.phone" >
 
           </b-form-input>
         </b-form-group>
@@ -73,7 +73,7 @@ export default {
       return new Promise((resolve, reject) => {
         CollegeService.putCollege(this.college)
           .then((response) => {
-            
+           alert("College Registration Successfully")
            this.college.collegename = "";
            this.college.username = "";
            this.college.password= "";

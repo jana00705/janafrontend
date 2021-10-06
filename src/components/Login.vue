@@ -2,7 +2,7 @@
     <div>
         <b-modal id="modal-1" title="LOGIN" ref="modal" hide-footer>
   
-      <div>
+      <!-- <div>
     <b-form-group>
                <b-form-radio-group  v-model="selected"
         >
@@ -22,43 +22,74 @@
                </b-form-radio-group>
               </b-form-group>
    
-  </div>
-       <b-form-group id="log-grp-2" label="User Name" label-for="un">
-          <b-form-input id="un"
-          name="un"
+  </div> -->
+       <b-form-group id="log-grp-1" label="User Name" >
+          <b-form-input  v-model="clg.username"
          >
            </b-form-input>
          
        </b-form-group>
 
-          <b-form-group id="log-grp-2" label="Password" label-for="pw">
-          <b-form-input id="pw"
-          name="pw"
-         
+          <b-form-group id="log-grp-2" label="Password" >
+          <b-form-input v-model="clg.password"
+          type="password"
           >
            </b-form-input>
          
        </b-form-group>
 
           <div class="text-center mt-5 ">
-           <b-button  size="sm" id="submit" type="submit" variant="outline-success">Submit</b-button>
-          <b-button class="mx-3" size="sm" id="cancel" @click="resetForm()"  variant="outline-danger">Reset</b-button>
+           <b-button  size="sm" id="submit"  variant="outline-success" @click="loginCollege()">Submit</b-button>
+          <b-button class="mx-3" size="sm" id="cancel" variant="outline-danger">Reset</b-button>
           </div>
-     
   </b-modal>
     </div>
 </template>
 
 <script>
-
+// import CollegeService from "../service/CollegeService";
+import axios from 'axios';
 export default {
   name: 'Login',
 
   data() {
       return {
-          selected: '1',
+          // selected: '1',
+          clg:{
+            username:'',
+            password:''
+          },
+          
           
       };
+      
     },
+     methods: {
+
+     loginCollege: function(){
+        var axio = axios.create({
+            baseURL: "http://localhost:8080",
+        });
+        let config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        return new Promise((resolve, reject) => {
+            axio
+                .post("/college/login",this.clg, config)
+                .then(response => {
+                  alert("login successfully")
+                  this.clg.username="",
+                 this.clg.password=""
+                    resolve(response);
+                })
+                .catch(err => {
+                   alert("login failed")
+                    reject(err);
+                });
+        }); 
+     }
+     }
 }
 </script>

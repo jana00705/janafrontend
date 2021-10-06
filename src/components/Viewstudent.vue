@@ -16,6 +16,7 @@
               <b-th>Email</b-th>
               <b-th>Address</b-th>
               <b-th>College</b-th>
+              <b-th>Action</b-th>
             </b-tr>
           </b-thead>
           <b-tbody>
@@ -25,7 +26,15 @@
               <b-td>{{ s.email }}</b-td>
               <b-td>{{ s.address }}</b-td>
               <b-td>{{ s.college }}</b-td>
-            
+             <b-td>
+                <b-icon
+                title="delete"
+                  icon="trash-fill"
+                  aria-hidden="true"
+                  @click="deleteStudent(s.id)">
+                  </b-icon>
+               
+              </b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
@@ -42,9 +51,9 @@
 <script>
 import NavBar from "./Navbar";
 import Footer from "./Footer";
-import ViewService from "../service/StudentService";
+import StudentService from "../service/StudentService";
 export default {
-  name: "view student",
+  name: "Viewstudent",
   components: {
     NavBar,
     Footer,
@@ -63,9 +72,22 @@ export default {
 
       getAllStudents: function() {
       return new Promise((resolve, reject) => {
-        ViewService.getAllStudents()
+        StudentService.getAllStudents()
           .then((response) => {
             this.students = response.data;
+            resolve(response);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+    },
+    deleteStudent: function (id) {
+      return new Promise((resolve, reject) => {
+        StudentService.deleteStudent(id)
+          .then((response) => {
+            this.students = response.data;
+            this.getAllStudents();
             resolve(response);
           })
           .catch((err) => {

@@ -18,12 +18,12 @@
         </b-form-group>
 
        <b-form-group  label="Password" >
-          <b-form-input  v-model="student.password">
+          <b-form-input  v-model="student.password" type="password">
           </b-form-input>
         </b-form-group>
 
         <b-form-group  label="Mobile Number" >
-          <b-form-input  v-model="student.phone">
+          <b-form-input  v-model="student.phone" type="number">
           </b-form-input>
         </b-form-group>
 
