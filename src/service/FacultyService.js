@@ -1,8 +1,9 @@
 import axios from 'axios';
 export default{
    
-    putCollege: function(college){
-        var ax = axios.create({
+   
+    putFaculty: function(faculty){
+        var axi = axios.create({
             baseURL: "http://localhost:8080",
         });
         let config = {
@@ -11,8 +12,8 @@ export default{
             }
         };
         return new Promise((resolve, reject) => {
-            ax
-                .post("/college/insert", college, config)
+            axi
+                .post("/faculty/insert", faculty, config)
                 .then(response => {
                     resolve(response);
                 })
@@ -21,14 +22,14 @@ export default{
                 });
         }); 
     },
-    getAllColleges: function() {
+    getAllFaculty: function() {
         var axi = axios.create({
           baseURL: "http://localhost:8080",
         });
         return new Promise((resolve, reject) => {
           axi({
             method: "get",
-            url: "/college/getAll",
+            url: "/faculty/getAll",
           }).then((response) => {
              
               resolve(response);
@@ -37,14 +38,14 @@ export default{
             });
         });
       },
-      deleteCollege: function(id){
+      deleteFaculty: function(id){
         var ax = axios.create({
             baseURL: "http://localhost:8080",
         }); 
         return new Promise((resolve, reject) => {
             ax({
                 method: 'get',
-                url: '/college/delete/' + id,
+                url: '/faculty/delete/' + id,
             }).then((response) => {                     
                 resolve(response);
             }).catch((err) => {
@@ -52,14 +53,14 @@ export default{
             });
         });             
     },
-    getCollege: function(id){
+    getFaculty: function(id){
         var ax1 = axios.create({
             baseURL: "http://localhost:8080",
         }); 
         return new Promise((resolve, reject) => {
             ax1({
                 method: 'get',
-                url: '/college/get/' + id,
+                url: '/faculty/get/' + id,
             }).then((response) => {                     
                 resolve(response);
             }).catch((err) => {
@@ -67,9 +68,7 @@ export default{
             });
         });             
     },
-   
-   
-    updateCollege: function(college){
+    updateFaculty: function(college){
         var ax = axios.create({
             baseURL: "http://localhost:8080",
         });
@@ -80,7 +79,7 @@ export default{
         };
         return new Promise((resolve, reject) => {
             ax
-                .post("/college/update", college, config)
+                .post("/faculty/update", college, config)
                 .then(response => {
                     resolve(response);
                 })
@@ -89,25 +88,5 @@ export default{
                 });
         }); 
     } ,
-    // loginCollege: function(clg){
-    //     var axio = axios.create({
-    //         baseURL: "http://localhost:8080",
-    //     });
-    //     let config = {
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     };
-    //     return new Promise((resolve, reject) => {
-    //         axio
-    //             .post("/college/login",clg, config)
-    //             .then(response => {
-    //                 resolve(response);
-    //             })
-    //             .catch(err => {
-    //                 reject(err);
-    //             });
-    //     }); 
-    //  }
    
 }

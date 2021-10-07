@@ -48,7 +48,7 @@
 
 <script>
 // import CollegeService from "../service/CollegeService";
-import axios from 'axios';
+import LoginService from "../service/CollegeService";
 export default {
   name: 'Login',
 
@@ -67,17 +67,8 @@ export default {
      methods: {
 
      loginCollege: function(){
-        var axio = axios.create({
-            baseURL: "http://localhost:8080",
-        });
-        let config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
         return new Promise((resolve, reject) => {
-            axio
-                .post("/college/login",this.clg, config)
+            LoginService.loginCollege(this.clg)
                 .then(response => {
                   alert("login successfully")
                   this.clg.username="",
