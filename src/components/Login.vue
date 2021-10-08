@@ -21,7 +21,6 @@
                 </b-container>
                </b-form-radio-group>
               </b-form-group>
-   
   </div> -->
        <b-form-group id="log-grp-1" label="User Name" >
           <b-form-input  v-model="clg.username"
@@ -48,7 +47,9 @@
 
 <script>
 // import CollegeService from "../service/CollegeService";
-import LoginService from "../service/CollegeService";
+// import VueCookies from 'vue-cookies'
+import LoginService from "../service/LoginService";
+
 export default {
   name: 'Login',
 
@@ -60,7 +61,6 @@ export default {
             password:''
           },
           
-          
       };
       
     },
@@ -71,12 +71,19 @@ export default {
             LoginService.loginCollege(this.clg)
                 .then(response => {
                   alert("login successfully")
+                  // VueCookies.set('name' ,this.clg.username, "1h") 
+                 localStorage.setItem('name', this.clg.username)
+                 localStorage.setItem('status','verified')
+                 this.$router.push({name:'College'})
                   this.clg.username="",
                  this.clg.password=""
+                
+                  
                     resolve(response);
                 })
                 .catch(err => {
                    alert("login failed")
+                    localStorage.setItem('status','unverified')
                     reject(err);
                 });
         }); 

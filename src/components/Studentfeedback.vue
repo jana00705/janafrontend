@@ -6,11 +6,19 @@
     <div class="mt-5 mb-5"><h1>Student Feedback</h1></div>
 
     <b-container>
+      <div>
+            <b-form-group  label="Student Name" >
+        <b-form-input
+    
+          v-model="studentfeedback.student">
+          </b-form-input>
+      </b-form-group>
+        </div>
         <div>
             <b-form-group  label="College" >
         <b-form-select
         class="form-control"
-          v-model="studenfb.college"
+          v-model="studentfeedback.college"
           :options="colleges">
           </b-form-select>
       </b-form-group>
@@ -24,12 +32,19 @@
       <b-form-textarea
         size="lg"
         placeholder="Enter Feed Back"
-        v-model="studentfb.feedback"
+        v-model="studentfeedback.feedback"
       ></b-form-textarea>
     </b-col>
   </b-row>
       </div>
-     
+     <div class="text-center mt-5 ">
+          <b-button
+            size="md"
+            id="submit"
+            variant="outline-success"
+            @click="putStudentFeedback()"
+            >Submit</b-button>
+        </div>
     </b-container>
     <div>
       <Footer />
@@ -56,8 +71,8 @@ export default {
         { value: "AAA", text: "AAA" },
         { value: "FATIMA", text: "FATIMA" },
       ],
-      studentfb: {
-        studentname:'',
+      studentfeedback: {
+       student:'',
        college:'',
        feedback:'',
 
@@ -66,14 +81,13 @@ export default {
   },
  
   methods: {
-  putStudentfb: function() {
+  putStudentFeedback: function() {
       return new Promise((resolve, reject) => {
-        FeedbackService.putStudentfb(this.studentfb)
+        FeedbackService.putStudentFeedback(this.studentfeedback)
           .then((response) => {
-            
-           this.studentfb.studentname = "";
-           this.student.college = "";
-           this.student.feedback= "";
+            this.studentfeedback.student= "";
+            this.studentfeedback.college= "";
+            this.studentfeedback.feedback= "";
             resolve(response);
           })
           .catch((err) => {
@@ -83,6 +97,5 @@ export default {
     },
      
     }
- 
 }
 </script>

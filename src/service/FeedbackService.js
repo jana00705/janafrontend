@@ -1,7 +1,7 @@
 import axios from 'axios';
 export default{
    
-    putCollegefb: function(feedback){
+    putFeedback: function(collegefeedback){
         var ax = axios.create({
             baseURL: "http://localhost:8080",
         });
@@ -12,7 +12,7 @@ export default{
         };
         return new Promise((resolve, reject) => {
             ax
-                .post("/feedback/insert",feedback, config)
+                .post("/collegefeedback/insert",collegefeedback, config)
                 .then(response => {
                     resolve(response);
                 })
@@ -21,23 +21,78 @@ export default{
                 });
         }); 
     },
-    // getAllColleges: function() {
-    //     var axi = axios.create({
-    //       baseURL: "http://localhost:8080",
-    //     });
-    //     return new Promise((resolve, reject) => {
-    //       axi({
-    //         method: "get",
-    //         url: "/college/getAll",
-    //       }).then((response) => {
+    putStudentFeedback: function(studentfeedback){
+        var ax = axios.create({
+            baseURL: "http://localhost:8080",
+        });
+        let config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        return new Promise((resolve, reject) => {
+            ax
+                .post("/studentfeedback/insert",studentfeedback, config)
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        }); 
+    },
+    putSendRequest: function(sendrequest){
+        var ax = axios.create({
+            baseURL: "http://localhost:8080",
+        });
+        let config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        return new Promise((resolve, reject) => {
+            ax
+                .post("/sendrequest/insert",sendrequest, config)
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        }); 
+    },
+    getAllFeedbacks: function() {
+        var ax = axios.create({
+          baseURL: "http://localhost:8080",
+        });
+        return new Promise((resolve, reject) => {
+          ax({
+            method: "get",
+            url: "/studentfeedback/getAll",
+          }).then((response) => {
              
-    //           resolve(response);
-    //         }).catch((err) => {
-    //           reject(err);
-    //         });
-    //     });
-    //   },
- 
+              resolve(response);
+            }).catch((err) => {
+              reject(err);
+            });
+        });
+      },
+      getAllCfeedbacks: function() {
+        var ax = axios.create({
+          baseURL: "http://localhost:8080",
+        });
+        return new Promise((resolve, reject) => {
+          ax({
+            method: "get",
+            url: "/collegefeedback/getAll",
+          }).then((response) => {
+             
+              resolve(response);
+            }).catch((err) => {
+              reject(err);
+            });
+        });
+      },
    
    
     
