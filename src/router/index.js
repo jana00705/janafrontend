@@ -27,27 +27,32 @@ const routes = [
                 path: '/Admin',
                 name: 'Admin',
                 component: Admin,
+                meta: { requiresAuth: true }
                
         }, 
         {
                 path: '/Admin/Viewstudent',
                 name: 'Viewstudent',
-                component: Viewstudent
+                component: Viewstudent,
+                meta: { requiresAuth: true }
         },
         { 
                 path: '/Admin/Viewcomplaints',
                 name: 'Viewcomplaints',
-                component: Viewcomplaints
+                component: Viewcomplaints,
+                meta: { requiresAuth: true }
         },
         {
                 path: '/Admin/DeleteInstitute',
                 name: 'DeleteInstitute',
-                component: DeleteInstitute
+                component: DeleteInstitute,
+                meta: { requiresAuth: true }
         },
         {
                 path: '/Admin/ApproveInstitute',
                 name: 'ApproveInstitute',
-                component: ApproveInstitute
+                component: ApproveInstitute,
+                meta: { requiresAuth: true }
         },
         {
                 path: '/College',
@@ -58,38 +63,45 @@ const routes = [
         {
                 path: '/College/Uploadarticle',
                 name: 'Uploadarticle',
-                component:Uploadarticle 
+                component:Uploadarticle, 
+                meta: { requiresAuth: true }
         }, 
         {
                 path: '/College/Facultymanagement',
                 name: 'Facultymanagement',
-                component:Facultymanagement 
+                component:Facultymanagement,
+                meta: { requiresAuth: true } 
         },
         {
                 path: '/College/Managefaculty',
                 name: 'Managefaculty',
-                component:Managefaculty 
+                component:Managefaculty ,
+                meta: { requiresAuth: true }
         },
 
         {
                 path: '/College/Feedback',
                 name: 'Feedback',
-                component:Feedback 
+                component:Feedback ,
+                meta: { requiresAuth: true }
         },
         {
                 path: '/Student',
                 name: 'Student',
-                component: Student
+                component: Student,
+                meta: { requiresAuth: true }
         }, 
         {
                 path: '/Student/Studentfeedback',
                 name: 'Studentfeedback',
-                component:Studentfeedback 
+                component:Studentfeedback ,
+                meta: { requiresAuth: true }
         },
         {
                 path: '/Student/Sendrequest',
                 name: 'Sendrequest',
-                component:Sendrequest 
+                component:Sendrequest ,
+                meta: { requiresAuth: true }
         },
 
 ];

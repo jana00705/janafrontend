@@ -16,7 +16,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -26,7 +26,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -38,7 +38,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -48,7 +48,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="/Student/Sendrequest" variant="outline-warning" pill>View This Page</b-button>
+  <b-button href="/Student/Sendrequest" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -66,7 +66,7 @@
 </b-col>
 </b-row>
 <div class="text-center mt-5 ">
-           <b-button href="/" variant="outline-success">LOGOUT</b-button>      
+           <b-button href="/" variant="outline-success" @click="logOut()">LOGOUT</b-button>      
 </div>
 </b-container>
  <div class="Home">
@@ -85,6 +85,17 @@ export default {
         
         NavBar,FooTer
   },
+   mounted(){
+    this.logOut();
+  },
+  methods:{
+     logOut: function(){
+       localStorage.setItem('status','unverified')
+     },
+      getIn: function(){
+      localStorage.setItem('status','verified') 
+     }
+  }
   
 }
 </script>

@@ -2,7 +2,7 @@
     <div>
         <b-modal id="modal-1" title="LOGIN" ref="modal" hide-footer>
   
-      <!-- <div>
+      <div>
     <b-form-group>
                <b-form-radio-group  v-model="selected"
         >
@@ -21,16 +21,16 @@
                 </b-container>
                </b-form-radio-group>
               </b-form-group>
-  </div> -->
+  </div>
        <b-form-group id="log-grp-1" label="User Name" >
-          <b-form-input  v-model="clg.username"
+          <b-form-input  v-model="log.username"
          >
            </b-form-input>
          
        </b-form-group>
 
           <b-form-group id="log-grp-2" label="Password" >
-          <b-form-input v-model="clg.password"
+          <b-form-input v-model="log.password"
           type="password"
           >
            </b-form-input>
@@ -38,7 +38,7 @@
        </b-form-group>
 
           <div class="text-center mt-5 ">
-           <b-button  size="sm" id="submit"  variant="outline-success" @click="loginCollege()">Submit</b-button>
+           <b-button  size="sm" id="submit"  variant="outline-success" @click="login()">Submit</b-button>
           <b-button class="mx-3" size="sm" id="cancel" variant="outline-danger">Reset</b-button>
           </div>
   </b-modal>
@@ -56,28 +56,48 @@ export default {
   data() {
       return {
           // selected: '1',
-          clg:{
+          log:{
             username:'',
             password:''
           },
+       
+          selected:'1',
           
       };
       
     },
      methods: {
-
-     loginCollege: function(){
+login:function(){
+  if(this.selected==1){
         return new Promise((resolve, reject) => {
-            LoginService.loginCollege(this.clg)
+            LoginService.loginAdmin(this.log)
                 .then(response => {
                   alert("login successfully")
-                  // VueCookies.set('name' ,this.clg.username, "1h") 
-                 localStorage.setItem('name', this.clg.username)
+                 localStorage.setItem('name', this.log.username)
+                 localStorage.setItem('status','verified')
+                 this.$router.push({name:'Admin'})
+                  this.log.username="",
+                 this.log.password=""
+                  
+                    resolve(response);
+                })
+                .catch(err => {
+                   alert("Admin login failed")
+                    localStorage.setItem('status','unverified')
+                    reject(err);
+                });
+        }); 
+     }
+ else if(this.selected==2){
+        return new Promise((resolve, reject) => {
+            LoginService.loginCollege(this.log)
+                .then(response => {
+                  alert("College login successfully")
+                 localStorage.setItem('name', this.log.username)
                  localStorage.setItem('status','verified')
                  this.$router.push({name:'College'})
-                  this.clg.username="",
-                 this.clg.password=""
-                
+                  this.log.username="",
+                 this.log.password=""
                   
                     resolve(response);
                 })
@@ -88,6 +108,28 @@ export default {
                 });
         }); 
      }
+      else if(this.selected==3){
+        return new Promise((resolve, reject) => {
+            LoginService.loginStudent(this.log)
+                .then(response => {
+                  alert("Student login successfully")
+                 localStorage.setItem('name', this.log.username)
+                 localStorage.setItem('status','verified')
+                 this.$router.push({name:'Student'})
+                  this.log.username="",
+                 this.log.password=""
+                  
+                    resolve(response);
+                })
+                .catch(err => {
+                   alert("login failed")
+                    localStorage.setItem('status','unverified')
+                    reject(err);
+                });
+        }); 
      }
+    
+  }
+}
 }
 </script>

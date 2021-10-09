@@ -126,7 +126,14 @@ export default {
         
         NavBar,FooTer
   },
-  
+  mounted(){
+    this.logout();
+  },
+  methods:{
+         logout: function(){
+       localStorage.setItem('status','unverified')
+     } 
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
