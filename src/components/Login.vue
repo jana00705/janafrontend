@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="form-control">
         <b-modal id="modal-1" title="LOGIN" ref="modal" hide-footer>
   
       <div>
@@ -22,24 +22,31 @@
                </b-form-radio-group>
               </b-form-group>
   </div>
-       <b-form-group id="log-grp-1" label="User Name" >
-          <b-form-input  v-model="log.username"
-         >
-           </b-form-input>
-         
-       </b-form-group>
+       <b-form-group label="User Name" label-for="username">
+          <b-form-input id="username"
+          name="user"
+           v-model.trim="$v.log.username.$model" :class="{'is-invalid':$v.log.username.$error, 'is-valid':!$v.log.username.$invalid}"
+         > </b-form-input>
+          
+            <div class="invalid-feedback">
+                <span v-if="!$v.log.username.required">User Name is required</span>
+            </div>
+         </b-form-group>
 
-          <b-form-group id="log-grp-2" label="Password" >
-          <b-form-input v-model="log.password"
+          <b-form-group  label="Password" label-for="password">
+          <b-form-input id="password"
+          name="password"
           type="password"
-          >
-           </b-form-input>
-         
-       </b-form-group>
-
+          v-model.trim="$v.log.password.$model" :class="{'is-invalid':$v.log.password.$error, 'is-valid':!$v.log.password.$invalid}"
+         > </b-form-input>
+       
+            <div class="invalid-feedback">
+                <span v-if="!$v.log.password.required">Password is required</span>
+            </div>
+         </b-form-group>
           <div class="text-center mt-5 ">
            <b-button  size="sm" id="submit"  variant="outline-success" @click="login()">Submit</b-button>
-          <b-button class="mx-3" size="sm" id="cancel" variant="outline-danger">Reset</b-button>
+          <b-button class="mx-3" type="reset" size="sm" id="cancel" variant="outline-danger">Reset</b-button>
           </div>
   </b-modal>
     </div>
@@ -49,7 +56,7 @@
 // import CollegeService from "../service/CollegeService";
 // import VueCookies from 'vue-cookies'
 import LoginService from "../service/LoginService";
-
+import { required} from "vuelidate/lib/validators";
 export default {
   name: 'Login',
 
@@ -66,15 +73,34 @@ export default {
       };
       
     },
+
+    validations: {
+   log: {
+      username: {
+        required,
+      },
+      password: {
+        required,
+      }
+   }
+   },
      methods: {
 login:function(){
+  this.$v.$touch()
+                if(this.$v.$invalid){
+                    this.submitstatus = "FAIL"
+                }
+                else {
+                    this.submitstatus = "SUCCESS"
   if(this.selected==1){
         return new Promise((resolve, reject) => {
             LoginService.loginAdmin(this.log)
                 .then(response => {
-                  alert("login successfully")
+                  
                  localStorage.setItem('name', this.log.username)
+                 localStorage.setItem('role', 'Admin')
                  localStorage.setItem('status','verified')
+                  alert("login successfully")
                  this.$router.push({name:'Admin'})
                   this.log.username="",
                  this.log.password=""
@@ -82,8 +108,9 @@ login:function(){
                     resolve(response);
                 })
                 .catch(err => {
-                   alert("Admin login failed")
+                   
                     localStorage.setItem('status','unverified')
+                    alert("Admin login failed")
                     reject(err);
                 });
         }); 
@@ -92,9 +119,11 @@ login:function(){
         return new Promise((resolve, reject) => {
             LoginService.loginCollege(this.log)
                 .then(response => {
-                  alert("College login successfully")
+                  
                  localStorage.setItem('name', this.log.username)
+                 localStorage.setItem('role', 'College')
                  localStorage.setItem('status','verified')
+                 alert("College login successfully")
                  this.$router.push({name:'College'})
                   this.log.username="",
                  this.log.password=""
@@ -112,9 +141,11 @@ login:function(){
         return new Promise((resolve, reject) => {
             LoginService.loginStudent(this.log)
                 .then(response => {
-                  alert("Student login successfully")
+               
                  localStorage.setItem('name', this.log.username)
+                  localStorage.setItem('role', 'Student')
                  localStorage.setItem('status','verified')
+                    alert("Student login successfully")
                  this.$router.push({name:'Student'})
                   this.log.username="",
                  this.log.password=""
@@ -130,6 +161,7 @@ login:function(){
      }
     
   }
+}
 }
 }
 </script>

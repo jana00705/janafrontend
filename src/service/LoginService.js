@@ -2,7 +2,7 @@ import axios from 'axios';
 export default{
 loginCollege: function(log){
     var axio = axios.create({
-        baseURL: "http://localhost:8080",
+        baseURL: "http://localhost:9090",
     });
     let config = {
         headers: {
@@ -22,7 +22,7 @@ loginCollege: function(log){
  },
  loginStudent: function(log){
     var ax = axios.create({
-        baseURL: "http://localhost:8080",
+        baseURL: "http://localhost:9090",
     });
     let config = {
         headers: {
@@ -42,7 +42,7 @@ loginCollege: function(log){
  },
  loginAdmin: function(log){
     var axi = axios.create({
-        baseURL: "http://localhost:8080",
+        baseURL: "http://localhost:9090",
     });
     let config = {
         headers: {

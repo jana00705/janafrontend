@@ -3,6 +3,11 @@
     <div>
       <NavBar />
     </div>
+   <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
+           <b-button href="/Admin" variant="outline-primary"><b-icon
+                title="back"
+                  icon="chevron-double-left"></b-icon>Back</b-button>    
+</div>
     <div class="mt-5 mb-5"><h1>View Complaints</h1></div>
 
     <b-container>
@@ -70,6 +75,7 @@ export default {
   mounted() {
     this.getAllFeedbacks();
   this.getAllCfeedbacks();
+  // this.logOut();
   },
   methods: {
 
@@ -97,7 +103,12 @@ export default {
           });
       });
     },
-    
+    // getIn: function(){
+    //   localStorage.setItem('status','verified') 
+    //  },
+    //  logOut: function(){
+    //    localStorage.setItem('status','unverified')
+    //  },
   }
 }
 </script>

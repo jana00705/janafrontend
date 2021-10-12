@@ -1,12 +1,18 @@
 <template>
   <div>
+    
     <div>
       <NavBar />
     </div>
+     <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
+           <b-button href="/Admin" variant="outline-primary" ><b-icon
+                title="back"
+                  icon="chevron-double-left"></b-icon>Back</b-button>    
+</div>
     <div class="mt-5 mb-5"><h1>Approve Institute</h1></div>
 
     <b-container>
-      <div>
+      <div >
         <b-table-simple class="table table-striped table-bordered mb-5">
           <b-thead>
             <b-tr variant="primary">
@@ -63,6 +69,7 @@ export default {
   },
   mounted() {
     this.getAllColleges();
+    // this.role();
   },
   methods: {
     getAllColleges: function () {
@@ -77,6 +84,13 @@ export default {
           });
       });
     },
+    // getIn: function(){
+    //   localStorage.setItem('status','verified') 
+    //  },
+    //  role: function(){
+    //    localStorage.setItem('role','Admin')
+    //  },
+      
    
   },
 };

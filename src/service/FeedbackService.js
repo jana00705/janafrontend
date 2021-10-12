@@ -3,7 +3,7 @@ export default{
    
     putFeedback: function(collegefeedback){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -23,7 +23,7 @@ export default{
     },
     putStudentFeedback: function(studentfeedback){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -43,7 +43,7 @@ export default{
     },
     putSendRequest: function(sendrequest){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -63,7 +63,7 @@ export default{
     },
     getAllFeedbacks: function() {
         var ax = axios.create({
-          baseURL: "http://localhost:8080",
+          baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
           ax({
@@ -79,7 +79,7 @@ export default{
       },
       getAllCfeedbacks: function() {
         var ax = axios.create({
-          baseURL: "http://localhost:8080",
+          baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
           ax({

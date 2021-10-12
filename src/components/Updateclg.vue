@@ -33,7 +33,7 @@
             size="sm"
             id="update"
             variant="outline-success"
-            @click="updateCollege()"
+            
             >Update</b-button>
         </div>
         </div>
@@ -48,7 +48,7 @@
 
 <script>
 
-import CollegeService from "../service/CollegeService";
+// import CollegeService from "../service/CollegeService";
 export default {
   name: "Updateclg",
   components: {
@@ -70,30 +70,30 @@ export default {
   methods: {
 
    
-    getCollege: function(id) {
-      return new Promise((resolve, reject) => {
-        CollegeService.getCollege(id)
-          .then((response) => {
-            this.college = response.data;
-            resolve(response);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    },
-    updateCollege: function() {
-      return new Promise((resolve, reject) => {
-        CollegeService.updateCollege(this.college)
-          .then((response) => {
-            this.getAllColleges();
-            resolve(response);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    },
+  //   getCollege: function(id) {
+  //     return new Promise((resolve, reject) => {
+  //       CollegeService.getCollege(id)
+  //         .then((response) => {
+  //           this.college = response.data;
+  //           resolve(response);
+  //         })
+  //         .catch((err) => {
+  //           reject(err);
+  //         });
+  //     });
+  //   },
+  //   updateCollege: function() {
+  //     return new Promise((resolve, reject) => {
+  //       CollegeService.updateCollege(this.college)
+  //         .then((response) => {
+  //           this.getAllColleges();
+  //           resolve(response);
+  //         })
+  //         .catch((err) => {
+  //           reject(err);
+  //         });
+  //     });
+  //   },
   }
 };
 </script>

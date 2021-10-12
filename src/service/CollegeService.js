@@ -3,7 +3,7 @@ export default{
    
     putCollege: function(college){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -23,7 +23,7 @@ export default{
     },
     getAllColleges: function() {
         var axi = axios.create({
-          baseURL: "http://localhost:8080",
+          baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
           axi({
@@ -37,9 +37,25 @@ export default{
             });
         });
       },
+      getAllRequests: function() {
+        var axi2 = axios.create({
+          baseURL: "http://localhost:9090",
+        });
+        return new Promise((resolve, reject) => {
+          axi2({
+            method: "get",
+            url: "/sendrequest/getAll",
+          }).then((response) => {
+             
+              resolve(response);
+            }).catch((err) => {
+              reject(err);
+            });
+        });
+      },
       deleteCollege: function(id){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         }); 
         return new Promise((resolve, reject) => {
             ax({
@@ -54,7 +70,7 @@ export default{
     },
     getCollege: function(id){
         var ax1 = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         }); 
         return new Promise((resolve, reject) => {
             ax1({
@@ -71,7 +87,7 @@ export default{
    
     updateCollege: function(college){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -91,7 +107,7 @@ export default{
     } ,
     // loginCollege: function(clg){
     //     var axio = axios.create({
-    //         baseURL: "http://localhost:8080",
+    //         baseURL: "http://localhost:9090",
     //     });
     //     let config = {
     //         headers: {

@@ -82,6 +82,7 @@
       </b-col>
       </b-row>
 </div>
+
 <b-container>
 <div class=" para">
 <b-row >

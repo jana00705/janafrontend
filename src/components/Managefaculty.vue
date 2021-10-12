@@ -3,6 +3,11 @@
     <div>
       <NavBar />
     </div>
+     <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
+           <b-button href="/College/Facultymanagement" variant="outline-primary" @click="getIn()"><b-icon
+                title="back"
+                  icon="chevron-double-left"></b-icon>Back</b-button>    
+</div>
     <div class="mt-5 mb-5"><h1>Manage Faculty</h1></div>
 
     <b-container>
@@ -72,6 +77,7 @@ export default {
   },
   mounted() {
     this.getAllFaculty();
+    this.logOut();
   },
   methods: {
     getAllFaculty: function () {
@@ -111,6 +117,12 @@ export default {
           });
       });
     },
+    getIn: function(){
+      localStorage.setItem('status','verified') 
+     },
+     logOut: function(){
+       localStorage.setItem('status','unverified')
+     }
   },
 };
 </script>

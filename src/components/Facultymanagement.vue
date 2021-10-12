@@ -3,6 +3,11 @@
     <div class="College">
    <NavBar />
   </div>
+  <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
+           <b-button href="/College" variant="outline-primary" @click="getIn()"><b-icon
+                title="back"
+                  icon="chevron-double-left"></b-icon>Back</b-button>    
+</div>
 <b-container class="bv-example-row mt-5">
   
   <b-row class="text-center">
@@ -16,7 +21,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  v-b-modal.addfac pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  v-b-modal.addfac pill @click="getIn()">View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -26,7 +31,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="/College/Managefaculty" variant="outline-warning"  pill>View This Page</b-button>
+  <b-button href="/College/Managefaculty" variant="outline-warning"  pill @click="getIn()">View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -54,9 +59,17 @@ export default {
         
         NavBar,FooTer,Addfaculty
   },
+  mounted(){
+ this.logOut();
+  },
   methods: {
 
-   
+   getIn: function(){
+      localStorage.setItem('status','verified') 
+     },
+     logOut: function(){
+       localStorage.setItem('status','unverified')
+     },
   } 
   
 }

@@ -4,7 +4,7 @@ export default{
    
     putFaculty: function(faculty){
         var axi = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -24,7 +24,7 @@ export default{
     },
     getAllFaculty: function() {
         var axi = axios.create({
-          baseURL: "http://localhost:8080",
+          baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
           axi({
@@ -40,7 +40,7 @@ export default{
       },
       deleteFaculty: function(id){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         }); 
         return new Promise((resolve, reject) => {
             ax({
@@ -55,7 +55,7 @@ export default{
     },
     getFaculty: function(id){
         var ax1 = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         }); 
         return new Promise((resolve, reject) => {
             ax1({
@@ -70,7 +70,7 @@ export default{
     },
     updateFaculty: function(college){
         var ax = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {

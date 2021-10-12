@@ -3,6 +3,11 @@
     <div class="Student">
    <NavBar />
   </div>
+  <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
+           <b-button href="/" variant="outline-primary" @click="logOut()"><b-icon
+                title="logout"
+                  icon="box-arrow-left"></b-icon>LOGOUT</b-button>    
+</div>
 <b-container class="bv-example-row mt-5">
   
   <b-row class="text-center">
@@ -16,7 +21,7 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -26,19 +31,19 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
+  <b-button href="#" variant="outline-warning"  pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
 </b-row>
  <b-row>
-    <b-col>
+     <b-col>
   <div class="crd">
-  <b-card bg-variant="dark" text-variant="white" title="View Responce">
+  <b-card bg-variant="dark" text-variant="white" title="Send Feedback">
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="#" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
+  <b-button href="/Student/Studentfeedback" variant="outline-warning"  pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
@@ -48,26 +53,12 @@
   <b-card-text>
     With supporting text below as a natural lead-in to additional content.
   </b-card-text>
-  <b-button href="/Student/Sendrequest" variant="outline-warning"  @click="getIn()" pill>View This Page</b-button>
+  <b-button href="/Student/Sendrequest" variant="outline-warning"  pill>View This Page</b-button>
 </b-card>
 </div>
 </b-col>
 </b-row>
-<b-row>
-    <b-col>
-  <div class="crd1">
-  <b-card bg-variant="dark" text-variant="white" title="Send Feedback">
-  <b-card-text>
-    With supporting text below as a natural lead-in to additional content.
-  </b-card-text>
-  <b-button href="/Student/Studentfeedback" variant="outline-warning"  pill>View This Page</b-button>
-</b-card>
-</div>
-</b-col>
-</b-row>
-<div class="text-center mt-5 ">
-           <b-button href="/" variant="outline-success" @click="logOut()">LOGOUT</b-button>      
-</div>
+
 </b-container>
  <div class="Home">
    <FooTer />
@@ -85,16 +76,11 @@ export default {
         
         NavBar,FooTer
   },
-   mounted(){
-    this.logOut();
-  },
+ 
   methods:{
      logOut: function(){
        localStorage.setItem('status','unverified')
      },
-      getIn: function(){
-      localStorage.setItem('status','verified') 
-     }
   }
   
 }
@@ -112,8 +98,5 @@ export default {
 h2{
   font-weight:bold;
 
-}
-.crd1{
-    margin-top: 5%;
 }
 </style>

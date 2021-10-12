@@ -4,7 +4,7 @@ export default{
    
     putStudent: function(student){
         var axi = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         });
         let config = {
             headers: {
@@ -24,7 +24,7 @@ export default{
     },
     getAllStudents: function() {
         var ax = axios.create({
-          baseURL: "http://localhost:8080",
+          baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
           ax({
@@ -40,7 +40,7 @@ export default{
       },
       deleteStudent: function(id){
         var ax1 = axios.create({
-            baseURL: "http://localhost:8080",
+            baseURL: "http://localhost:9090",
         }); 
         return new Promise((resolve, reject) => {
             ax1({
