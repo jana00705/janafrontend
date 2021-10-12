@@ -1,9 +1,9 @@
 <template>
   <div class="form-control">
     <b-modal
-      id="modal-2"
+      id="upstu"
       scrollable
-      title="STUDENT REGISTRATION"
+      title="UPDATE STUDENT DETAILS"
       ref="modal"
       hide-footer
     >
@@ -160,7 +160,7 @@
             id="submit"
             variant="outline-success"
             @click="putStudent()"
-            >Submit</b-button
+            >Update</b-button
           >
         </div>
       </div>

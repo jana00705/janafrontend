@@ -3,15 +3,14 @@
     <div>
       <NavBar />
     </div>
-    <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
-           <b-button href="/Admin" variant="outline-primary" ><b-icon
-                title="back"
-                  icon="chevron-double-left"></b-icon>Back</b-button>    
-</div>
+    <div class="mt-5 d-grid gap-2 d-md-flex justify-content-md-end">
+      <b-button href="/Admin" variant="outline-primary"
+        ><b-icon title="back" icon="chevron-double-left"></b-icon>Back</b-button
+      >
+    </div>
     <div class="mt-5 mb-5"><h1>View Student</h1></div>
 
     <b-container>
-
       <div>
         <b-table-simple class="table table-striped table-bordered mb-5">
           <b-thead>
@@ -31,21 +30,19 @@
               <b-td>{{ s.email }}</b-td>
               <b-td>{{ s.address }}</b-td>
               <b-td>{{ s.college }}</b-td>
-             <b-td>
+              <b-td>
                 <b-icon
-                title="delete"
+                  title="delete"
                   icon="trash-fill"
                   aria-hidden="true"
-                  @click="deleteStudent(s.id)">
-                  </b-icon>
-               
+                  @click="deleteStudent(s.id)"
+                >
+                </b-icon>
               </b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
       </div>
-      
-     
     </b-container>
     <div>
       <Footer />
@@ -66,17 +63,14 @@ export default {
   data() {
     return {
       students: null,
-
     };
   },
   mounted() {
     this.getAllStudents();
     // this.logOut();
-  
   },
   methods: {
-
-      getAllStudents: function() {
+    getAllStudents: function () {
       return new Promise((resolve, reject) => {
         StudentService.getAllStudents()
           .then((response) => {
@@ -101,12 +95,12 @@ export default {
           });
       });
     },
-//  getIn: function(){
-//       localStorage.setItem('status','verified') 
-//      },
-//      logOut: function(){
-//        localStorage.setItem('status','unverified')
-//      }
-  }
-}
+    //  getIn: function(){
+    //       localStorage.setItem('status','verified')
+    //      },
+    //      logOut: function(){
+    //        localStorage.setItem('status','unverified')
+    //      }
+  },
+};
 </script>

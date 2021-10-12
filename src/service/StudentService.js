@@ -1,8 +1,8 @@
 import axios from 'axios';
-export default{
-   
-   
-    putStudent: function(student){
+export default {
+
+
+    putStudent: function (student) {
         var axi = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -20,38 +20,38 @@ export default{
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    getAllStudents: function() {
+    getAllStudents: function () {
         var ax = axios.create({
-          baseURL: "http://localhost:9090",
-        });
-        return new Promise((resolve, reject) => {
-          ax({
-            method: "get",
-            url: "/student/getAll",
-          }).then((response) => {
-             
-              resolve(response);
-            }).catch((err) => {
-              reject(err);
-            });
-        });
-      },
-      deleteStudent: function(id){
-        var ax1 = axios.create({
             baseURL: "http://localhost:9090",
-        }); 
+        });
         return new Promise((resolve, reject) => {
-            ax1({
-                method: 'get',
-                url: '/student/delete/' + id,
-            }).then((response) => {                     
+            ax({
+                method: "get",
+                url: "/student/getAll",
+            }).then((response) => {
+
                 resolve(response);
             }).catch((err) => {
                 reject(err);
             });
-        });             
+        });
     },
-   
+    deleteStudent: function (id) {
+        var ax1 = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        return new Promise((resolve, reject) => {
+            ax1({
+                method: 'get',
+                url: '/student/delete/' + id,
+            }).then((response) => {
+                resolve(response);
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    },
+
 }

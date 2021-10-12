@@ -1,8 +1,8 @@
 import axios from 'axios';
-export default{
-   
-   
-    putFaculty: function(faculty){
+export default {
+
+
+    putFaculty: function (faculty) {
         var axi = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -20,55 +20,55 @@ export default{
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    getAllFaculty: function() {
+    getAllFaculty: function () {
         var axi = axios.create({
-          baseURL: "http://localhost:9090",
+            baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
-          axi({
-            method: "get",
-            url: "/faculty/getAll",
-          }).then((response) => {
-             
-              resolve(response);
+            axi({
+                method: "get",
+                url: "/faculty/getAll",
+            }).then((response) => {
+
+                resolve(response);
             }).catch((err) => {
-              reject(err);
+                reject(err);
             });
         });
-      },
-      deleteFaculty: function(id){
+    },
+    deleteFaculty: function (id) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
-        }); 
+        });
         return new Promise((resolve, reject) => {
             ax({
                 method: 'get',
                 url: '/faculty/delete/' + id,
-            }).then((response) => {                     
+            }).then((response) => {
                 resolve(response);
             }).catch((err) => {
                 reject(err);
             });
-        });             
+        });
     },
-    getFaculty: function(id){
+    getFaculty: function (id) {
         var ax1 = axios.create({
             baseURL: "http://localhost:9090",
-        }); 
+        });
         return new Promise((resolve, reject) => {
             ax1({
                 method: 'get',
                 url: '/faculty/get/' + id,
-            }).then((response) => {                     
+            }).then((response) => {
                 resolve(response);
             }).catch((err) => {
                 reject(err);
             });
-        });             
+        });
     },
-    updateFaculty: function(college){
+    updateFaculty: function (college) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -86,7 +86,7 @@ export default{
                 .catch(err => {
                     reject(err);
                 });
-        }); 
-    } ,
-   
+        });
+    },
+
 }

@@ -3,19 +3,23 @@
     <div>
       <NavBar />
     </div>
-    <div class=" mt-5 d-grid gap-2 d-md-flex justify-content-md-end"> 
-           <b-button href="/Admin" variant="outline-primary"><b-icon
-                title="back"
-                  icon="chevron-double-left"></b-icon>Back</b-button>    
-</div>
+    <div class="mt-5 d-grid gap-2 d-md-flex justify-content-md-end">
+      <b-button href="/Admin" variant="outline-primary"
+        ><b-icon title="back" icon="chevron-double-left"></b-icon>Back</b-button
+      >
+    </div>
     <div class="mt-5 mb-5"><h1>Delete Institute</h1></div>
 
     <b-container>
       <div>
-        <b-table-simple class="table table-striped table-bordered mb-5">
+        <b-table-simple
+          hover
+          responsive
+          class="table table-striped table-bordered mb-5"
+        >
           <b-thead>
             <b-tr variant="primary">
-              <b-th >College Id</b-th>
+              <b-th>College Id</b-th>
               <b-th>College Name</b-th>
               <b-th>Action</b-th>
             </b-tr>
@@ -26,13 +30,14 @@
               <b-td>{{ s.collegename }}</b-td>
               <b-td
                 ><b-icon
-                title="delete"
+                  title="delete"
                   icon="trash-fill"
                   aria-hidden="true"
                   @click="deleteCollege(s.id)"
                 ></b-icon>
                 <span class="mx-1"> / </span>
-                <b-icon title="view"
+                <b-icon
+                  title="view"
                   icon="eye-fill"
                   aria-hidden="true"
                   v-b-modal.viewins
@@ -55,10 +60,14 @@
         scrollable
         title="View Institute"
         ref="modal"
-        hide-footer>
-
+        hide-footer
+      >
         <div>
-          <b-table-simple class="table table-striped table-bordered mb-5">
+          <b-table-simple
+            hover
+            responsive
+            class="table table-striped table-bordered mb-5"
+          >
             <b-tbody>
               <b-tr>
                 <b-th>College Id</b-th>
@@ -154,7 +163,7 @@ export default {
       });
     },
     // getIn: function(){
-    //   localStorage.setItem('status','verified') 
+    //   localStorage.setItem('status','verified')
     //  },
     //  logOut: function(){
     //    localStorage.setItem('status','unverified')

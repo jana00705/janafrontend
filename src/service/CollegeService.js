@@ -1,7 +1,7 @@
 import axios from 'axios';
-export default{
-   
-    putCollege: function(college){
+export default {
+
+    putCollege: function (college) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -19,73 +19,73 @@ export default{
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    getAllColleges: function() {
+    getAllColleges: function () {
         var axi = axios.create({
-          baseURL: "http://localhost:9090",
+            baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
-          axi({
-            method: "get",
-            url: "/college/getAll",
-          }).then((response) => {
-             
-              resolve(response);
+            axi({
+                method: "get",
+                url: "/college/getAll",
+            }).then((response) => {
+
+                resolve(response);
             }).catch((err) => {
-              reject(err);
+                reject(err);
             });
         });
-      },
-      getAllRequests: function() {
+    },
+    getAllRequests: function () {
         var axi2 = axios.create({
-          baseURL: "http://localhost:9090",
+            baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
-          axi2({
-            method: "get",
-            url: "/sendrequest/getAll",
-          }).then((response) => {
-             
-              resolve(response);
+            axi2({
+                method: "get",
+                url: "/sendrequest/getAll",
+            }).then((response) => {
+
+                resolve(response);
             }).catch((err) => {
-              reject(err);
+                reject(err);
             });
         });
-      },
-      deleteCollege: function(id){
+    },
+    deleteCollege: function (id) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
-        }); 
+        });
         return new Promise((resolve, reject) => {
             ax({
                 method: 'get',
                 url: '/college/delete/' + id,
-            }).then((response) => {                     
+            }).then((response) => {
                 resolve(response);
             }).catch((err) => {
                 reject(err);
             });
-        });             
+        });
     },
-    getCollege: function(id){
+    getCollege: function (id) {
         var ax1 = axios.create({
             baseURL: "http://localhost:9090",
-        }); 
+        });
         return new Promise((resolve, reject) => {
             ax1({
                 method: 'get',
                 url: '/college/get/' + id,
-            }).then((response) => {                     
+            }).then((response) => {
                 resolve(response);
             }).catch((err) => {
                 reject(err);
             });
-        });             
+        });
     },
-   
-   
-    updateCollege: function(college){
+
+
+    updateCollege: function (college) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -103,8 +103,8 @@ export default{
                 .catch(err => {
                     reject(err);
                 });
-        }); 
-    } ,
+        });
+    },
     // loginCollege: function(clg){
     //     var axio = axios.create({
     //         baseURL: "http://localhost:9090",
@@ -125,5 +125,5 @@ export default{
     //             });
     //     }); 
     //  }
-   
+
 }

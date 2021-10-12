@@ -1,7 +1,7 @@
 import axios from 'axios';
-export default{
-   
-    putFeedback: function(collegefeedback){
+export default {
+
+    putFeedback: function (collegefeedback) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -12,16 +12,16 @@ export default{
         };
         return new Promise((resolve, reject) => {
             ax
-                .post("/collegefeedback/insert",collegefeedback, config)
+                .post("/collegefeedback/insert", collegefeedback, config)
                 .then(response => {
                     resolve(response);
                 })
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    putStudentFeedback: function(studentfeedback){
+    putStudentFeedback: function (studentfeedback) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -32,16 +32,16 @@ export default{
         };
         return new Promise((resolve, reject) => {
             ax
-                .post("/studentfeedback/insert",studentfeedback, config)
+                .post("/studentfeedback/insert", studentfeedback, config)
                 .then(response => {
                     resolve(response);
                 })
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    putSendRequest: function(sendrequest){
+    putSendRequest: function (sendrequest) {
         var ax = axios.create({
             baseURL: "http://localhost:9090",
         });
@@ -52,50 +52,50 @@ export default{
         };
         return new Promise((resolve, reject) => {
             ax
-                .post("/sendrequest/insert",sendrequest, config)
+                .post("/sendrequest/insert", sendrequest, config)
                 .then(response => {
                     resolve(response);
                 })
                 .catch(err => {
                     reject(err);
                 });
-        }); 
+        });
     },
-    getAllFeedbacks: function() {
+    getAllFeedbacks: function () {
         var ax = axios.create({
-          baseURL: "http://localhost:9090",
+            baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
-          ax({
-            method: "get",
-            url: "/studentfeedback/getAll",
-          }).then((response) => {
-             
-              resolve(response);
+            ax({
+                method: "get",
+                url: "/studentfeedback/getAll",
+            }).then((response) => {
+
+                resolve(response);
             }).catch((err) => {
-              reject(err);
+                reject(err);
             });
         });
-      },
-      getAllCfeedbacks: function() {
+    },
+    getAllCfeedbacks: function () {
         var ax = axios.create({
-          baseURL: "http://localhost:9090",
+            baseURL: "http://localhost:9090",
         });
         return new Promise((resolve, reject) => {
-          ax({
-            method: "get",
-            url: "/collegefeedback/getAll",
-          }).then((response) => {
-             
-              resolve(response);
+            ax({
+                method: "get",
+                url: "/collegefeedback/getAll",
+            }).then((response) => {
+
+                resolve(response);
             }).catch((err) => {
-              reject(err);
+                reject(err);
             });
         });
-      },
-   
-   
-    
-   
-   
+    },
+
+
+
+
+
 }
