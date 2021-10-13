@@ -53,5 +53,40 @@ export default {
             });
         });
     },
-
+    getStudent: function (id) {
+        var ax1 = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        return new Promise((resolve, reject) => {
+            ax1({
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             method: 'get',
+                url: '/student/get/' + id,
+            }).then((response) => {
+                resolve(response);
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+    },
+    updateStudent: function (student) {
+        var ax = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        let config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        return new Promise((resolve, reject) => {
+            ax
+                .post("/student/update", student, config)
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    },
+        
 }

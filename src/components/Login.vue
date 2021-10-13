@@ -98,6 +98,7 @@ export default {
       },
 
       selected: "1",
+      id:'',
     };
   },
 
@@ -122,7 +123,7 @@ export default {
           return new Promise((resolve, reject) => {
             LoginService.loginAdmin(this.log)
               .then((response) => {
-                localStorage.setItem("name", this.log.username);
+                
                 localStorage.setItem("role", "Admin");
                 localStorage.setItem("status", "verified");
                 alert("login successfully");
@@ -141,7 +142,8 @@ export default {
           return new Promise((resolve, reject) => {
             LoginService.loginCollege(this.log)
               .then((response) => {
-                localStorage.setItem("name", this.log.username);
+                this.id = response.data;
+                localStorage.setItem("collegeId",this.id);
                 localStorage.setItem("role", "College");
                 localStorage.setItem("status", "verified");
                 alert("College login successfully");
@@ -160,7 +162,7 @@ export default {
           return new Promise((resolve, reject) => {
             LoginService.loginStudent(this.log)
               .then((response) => {
-                localStorage.setItem("name", this.log.username);
+                localStorage.setItem("studentId",this.id);
                 localStorage.setItem("role", "Student");
                 localStorage.setItem("status", "verified");
                 alert("Student login successfully");

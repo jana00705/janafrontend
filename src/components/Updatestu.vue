@@ -159,7 +159,7 @@
             size="sm"
             id="submit"
             variant="outline-success"
-            @click="putStudent()"
+            
             >Update</b-button
           >
         </div>
